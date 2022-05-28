@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import yieom.study.androidarchitecture.databinding.FragmentMainBinding
+import androidx.lifecycle.ViewModelProvider
+import yieom.study.androidarchitecture.databinding.FragmentFirstBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,7 +20,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [MainFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainFragment : Fragment() {
+class FirstFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -32,7 +33,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -40,13 +41,27 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentMainBinding.inflate(inflater,container,false)
+        _binding = FragmentFirstBinding.inflate(inflater,container,false)
         return binding.root
     }
 
-    private val model: MainViewModel by viewModels()
+    private val model: FirstViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val mainModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        binding.btnSend.setOnClickListener {
+            mainModel.sendMessage("From First")
+        }
+
+        binding.btnToSecond.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .add(R.id.container, SecondFragment())
+                .commit()
+        }
+
+        binding.model = model
 
         model.getCount().observe(viewLifecycleOwner, Observer {
             binding.tvCount.text = "$it"
@@ -74,7 +89,7 @@ class MainFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
+            FirstFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="yieom.study.androidarchitecture.FirstViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background"
+        android:orientation="vertical"
+        tools:context=".MainFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_count_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Count Up"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.btnCountDown}"
+            android:onClick="@{()->model.onClickCountDown()}"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_to_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Second"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</layout>
