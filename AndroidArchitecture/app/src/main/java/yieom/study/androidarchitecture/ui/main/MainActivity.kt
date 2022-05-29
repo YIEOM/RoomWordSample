@@ -1,8 +1,9 @@
-package yieom.study.androidarchitecture
+package yieom.study.androidarchitecture.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import yieom.study.androidarchitecture.R
 import yieom.study.androidarchitecture.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment() {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container,FirstFragment()).commit()
+        transaction.replace(R.id.container, FirstFragment()).commit()
     }
 }

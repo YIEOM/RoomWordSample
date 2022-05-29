@@ -1,4 +1,4 @@
-package yieom.study.androidarchitecture
+package yieom.study.androidarchitecture.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

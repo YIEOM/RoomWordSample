@@ -1,4 +1,4 @@
-package yieom.study.androidarchitecture
+package yieom.study.androidarchitecture.ui.main
 
 import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
